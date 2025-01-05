@@ -11,6 +11,14 @@ from .dmg_calc.dmg_calc import get_char_dmg_percent
 from .etc.etc import TEXT_PATH, get_all_artifacts_value
 from .etc.MAP_PATH import COLOR_MAP, avatarName2SkillAdd
 from ..utils.image.image_tools import get_v4_bg, get_star_png
+from ..utils.resource.RESOURCE_PATH import (
+    REL_PATH,
+    ICON_PATH,
+    PLAYER_PATH,
+    WEAPON_PATH,
+    GACHA_IMG_PATH,
+    CHAR_NAMECARDPIC_PATH,
+)
 from ..utils.fonts.genshin_fonts import (
     gs_font_18,
     gs_font_20,
@@ -20,15 +28,6 @@ from ..utils.fonts.genshin_fonts import (
     gs_font_30,
     gs_font_36,
     gs_font_44,
-)
-from ..utils.resource.RESOURCE_PATH import (
-    REL_PATH,
-    ICON_PATH,
-    PLAYER_PATH,
-    WEAPON_PATH,
-    GACHA_IMG_PATH,
-    CHAR_STAND_PATH,
-    CHAR_NAMECARDPIC_PATH,
 )
 
 DMAP = {
@@ -378,18 +377,11 @@ async def get_char_img(char: Character):
     char_fg = Image.open(TEXT_PATH / 'info_char_fg.png')
     char_bg = Image.open(TEXT_PATH / 'info_char_bg.png')
 
-    if char_name == '旅行者':
-        char_img = (
-            Image.open(CHAR_STAND_PATH / '10000007.png')
-            .convert('RGBA')
-            .resize((1776, 1000))
-        )
-    else:
-        char_img = (
-            Image.open(GACHA_IMG_PATH / f'{char_name}.png')
-            .resize((1776, 1000))
-            .convert('RGBA')
-        )
+    char_img = (
+        Image.open(GACHA_IMG_PATH / f'{char_name}.png')
+        .resize((1776, 1000))
+        .convert('RGBA')
+    )
 
     char_mask = Image.new('RGBA', (700, 1000))
     char_pic = Image.new('RGBA', (700, 1000))

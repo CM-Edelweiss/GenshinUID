@@ -14,7 +14,7 @@ with open(MAP_PATH / 'enName2AvatarID_mapping_5.3.0.json') as f:
 
 suffix = 'webp'
 
-char_list = ['Mavuika', 'Citlali', 'Lanyan']
+char_list = ['Diluc', 'PlayerFire']
 base = 'https://api.hakush.in/gi/UI'
 # title = 'https://enka.network/ui/{}'
 # hakush = 'https://api.hakush.in/gi/UI/'

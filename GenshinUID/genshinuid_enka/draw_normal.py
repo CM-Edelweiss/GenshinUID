@@ -21,7 +21,6 @@ from ..utils.resource.RESOURCE_PATH import (
     ICON_PATH,
     CU_CHBG_PATH,
     GACHA_IMG_PATH,
-    CHAR_STAND_PATH,
 )
 from ..utils.fonts.genshin_fonts import (
     gs_font_15,
@@ -418,16 +417,7 @@ async def get_char_img(
         char_img = Image.open(BytesIO(char.char_bytes)).convert('RGBA')
     else:
         offset_x, offset_y = 200, 0
-        if char_name == '旅行者':
-            char_img = (
-                Image.open(CHAR_STAND_PATH / '10000007.png')
-                .convert('RGBA')
-                .resize((1421, 800))
-            )
-        else:
-            char_img = Image.open(
-                GACHA_IMG_PATH / f'{char_name}.png'
-            )  # 角色图像
+        char_img = Image.open(GACHA_IMG_PATH / f'{char_name}.png')  # 角色图像
     # 确定图片的长宽
     w, h = char_img.size
     if (w, h) != (based_w, based_h):

@@ -343,7 +343,16 @@ async def main():
 
     for char_id in avatarId2Name:
         char_list.append(avatarId2Name[char_id])
-    char_list.extend(['旅行者(风)', '旅行者(雷)', '旅行者(岩)', '旅行者(草)'])
+    char_list.extend(
+        [
+            '旅行者(风)',
+            '旅行者(雷)',
+            '旅行者(岩)',
+            '旅行者(草)',
+            '旅行者(火)',
+            '旅行者(水)',
+        ]
+    )
     for char in char_list:
         print(char)
         '''
@@ -352,14 +361,32 @@ async def main():
         ).json()
         if 'retcode' in talent_data:
         '''
-        for _id in avatarId2Name:
-            if avatarId2Name[_id] == char:
-                char_id = _id
-                break
+        if char == '旅行者(风)':
+            char_id = '10000005-anemo'
+        elif char == '旅行者(雷)':
+            char_id = '10000005-electro'
+        elif char == '旅行者(岩)':
+            char_id = '10000005-geo'
+        elif char == '旅行者(草)':
+            char_id = '10000005-dendro'
+        elif char == '旅行者(火)':
+            char_id = '10000005-pyro'
+        elif char == '旅行者(水)':
+            char_id = '10000005-hydro'
+        elif char == '旅行者(冰)':
+            char_id = '10000005-cryo'
         else:
-            continue
-        if int(char_id) >= 11000000:
-            continue
+            for _id in avatarId2Name:
+                if avatarId2Name[_id] == char:
+                    char_id = _id
+                    break
+            else:
+                continue
+        try:
+            if int(char_id) >= 11000000:
+                continue
+        except:  # noqa: E722
+            pass
 
         try:
             talent_data = await convert_ambr_to_talent(char_id)

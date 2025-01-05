@@ -114,8 +114,9 @@ async def mys_to_data(uid: str):
                 continue
 
             skill_icon = skill_icon_map[skill_id]
-            if skill_id.endswith('3') and skill_icon.endswith('2'):
-                continue
+            if skill_id not in ['10033']:
+                if skill_id.endswith('3') and skill_icon.endswith('2'):
+                    continue
 
             n += 1
             skill_level = skill['level']
